@@ -1,0 +1,15 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "jako-claude-plugins",
+  "description": "Brian Jacobs' personal Claude Code plugins",
+  "owner": {
+    "name": "Brian Jacobs"
+  },
+  "plugins": [
+    {
+      "name": "feature-dev-simple",
+      "description": "One feature at a time, every decision the user's: discovery, questions, spec, approval, then TDD implementation. Ships its own light explorer, architect and reviewer agents.",
+      "source": "./plugins/feature-dev-simple"
+    }
+  ]
+}

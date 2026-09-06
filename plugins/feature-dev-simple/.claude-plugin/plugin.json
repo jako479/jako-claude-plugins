@@ -1,0 +1,9 @@
+{
+  "name": "feature-dev-simple",
+  "description": "One feature at a time, every decision the user's: discovery, questions, spec, approval, then TDD implementation. Ships its own light explorer, architect and reviewer agents.",
+  "version": "1.0.0",
+  "license": "Apache-2.0",
+  "author": {
+    "name": "Brian Jacobs"
+  }
+}
