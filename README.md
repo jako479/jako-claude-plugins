@@ -16,11 +16,20 @@ Three agents of its own:
   recommends, never decides
 - `feature-dev-simple:code-reviewer` — reports only what it is sure of
 
+## session-notes
+
+Saves a short note about a session to your notes folder, lists it in the
+project's index, then archives the session.
+
+- `/session-notes:archive-session` — short note
+- `/session-notes:archive-session 2` — more detail
+
 ## Install
 
 ```
 /plugin marketplace add <owner>/jako-claude-plugins
 /plugin install feature-dev-simple@jako-claude-plugins
+/plugin install session-notes@jako-claude-plugins
 ```
 
 ## Structure
@@ -32,6 +41,8 @@ plugins/<name>/                   one folder per plugin
   SKILL.md                        one skill lives here
   skills/<name>/SKILL.md          more than one goes here instead
   agents/*.md                     named <plugin>:<agent>
+  scripts/*.py                    scripts a skill runs
+tests/                            tests for plugin scripts
 ```
 
 Plugin sources are relative to the repo root and cannot use `../`, so plugins
@@ -57,6 +68,7 @@ Before committing:
 ```
 claude plugin validate .
 claude plugin validate plugins/<name>
+python -m unittest discover -s tests
 ```
 
 Every copied file says where it came from and that it changed.

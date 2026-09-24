@@ -1,0 +1,17 @@
+{
+  "name": "session-notes",
+  "description": "Save a short note about a Claude Code session to a notes folder, list it in the project's index, then archive the session.",
+  "version": "1.0.0",
+  "license": "Apache-2.0",
+  "author": {
+    "name": "Brian Jacobs"
+  },
+  "userConfig": {
+    "notes_root": {
+      "type": "directory",
+      "title": "Notes folder",
+      "description": "Root folder for session notes, such as an Obsidian vault folder.",
+      "required": true
+    }
+  }
+}

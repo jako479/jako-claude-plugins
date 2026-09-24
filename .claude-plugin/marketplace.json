@@ -10,6 +10,11 @@
       "name": "feature-dev-simple",
       "description": "One feature at a time, every decision the user's: discovery, questions, spec, approval, then TDD implementation. Ships its own light explorer, architect and reviewer agents.",
       "source": "./plugins/feature-dev-simple"
+    },
+    {
+      "name": "session-notes",
+      "description": "Save a short note about a Claude Code session to a notes folder, list it in the project's index, then archive the session.",
+      "source": "./plugins/session-notes"
     }
   ]
 }

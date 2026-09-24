@@ -10,6 +10,8 @@ One line per task.
 - add the marketplace, install `feature-dev-simple@jako-claude-plugins`
 - disable `feature-dev@claude-plugins-official`
 - run a real feature through it
+- install `session-notes@jako-claude-plugins`, set its Notes folder, try it in
+  the app, CLI and VS Code
 
 ## DECIDED FOR
 
@@ -22,6 +24,10 @@ One line per task.
 - Opus. Effort `high` explorer, `xhigh` architect and reviewer
 - Explorer and architect 1-2 with a test; reviewer always 1
 - Names in the spec, checked by the reviewer
+- `session-notes`: Claude writes the text, a Python script writes the files
+- Notes in `<root>/<parent>/<project>/`, one `index.md` per project
+- Session name from the transcript: renamed title, else the automatic one
+- Detail levels 1 (default) and 2
 
 ## DECIDED AGAINST
 
@@ -33,3 +39,5 @@ One line per task.
 - Listing what changed in each file — goes stale
 - 3 reviewers — same findings, 3x tokens
 - A separate naming skill — reviewer already reads the diff
+- A standalone skill for `session-notes` — only plugins get settings
+- `<...>` links in the index — Obsidian's editor doesn't follow them

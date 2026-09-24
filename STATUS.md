@@ -1,11 +1,14 @@
 # Status
 
-Updated: 2026-09-05 — repo created.
+Updated: 2026-09-23 — `session-notes` added.
 
 Open tasks: [TODO.md](TODO.md).
 
 ## Recently done
 
+- 2026-09-23 — new plugin `session-notes`. `/session-notes:archive-session`
+  saves a short session note and an index row, then archives the session in
+  the app.
 - 2026-09-05 — `dev-feature` skill is now a plugin, `feature-dev-simple`. It
   has its own agents instead of using Anthropic's.
 - 2026-09-05 — three agents copied from `feature-dev` and cut down. Each says
