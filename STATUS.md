@@ -1,11 +1,14 @@
 # Status
 
-Updated: 2026-09-23 — `session-notes` 1.0.1.
+Updated: 2026-09-24 — `session-notes` 1.1.0.
 
 Open tasks: [TODO.md](TODO.md).
 
 ## Recently done
 
+- 2026-09-24 — `session-notes` 1.1.0: new note layout with a summary line,
+  session link, git status per branch, doc links, `Follows:` links, and
+  Dataview fields and tags at the bottom. No more detail levels.
 - 2026-09-23 — `session-notes` 1.0.1: the newest session goes at the top of
   `index.md`.
 - 2026-09-23 — new plugin `session-notes`. `/session-notes:archive-session`

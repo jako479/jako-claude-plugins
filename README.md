@@ -19,10 +19,8 @@ Three agents of its own:
 ## session-notes
 
 Saves a short note about a session to your notes folder, lists it in the
-project's index, then archives the session.
-
-- `/session-notes:archive-session` — short note
-- `/session-notes:archive-session 2` — more detail
+project's index, then archives the session. Run
+`/session-notes:archive-session`.
 
 ## Install
 

@@ -6,9 +6,10 @@ archive the session.
 ## Use
 
 ```
-/session-notes:archive-session      short note
-/session-notes:archive-session 2    more detail
+/session-notes:archive-session
 ```
+
+`/archive-session` also works when no other command has that name.
 
 It writes:
 
@@ -20,6 +21,16 @@ It writes:
 `<parent>/<project>` comes from the session's folder, for example
 `PNFL/athc`. A session in a worktree uses its main folder. The newest session
 is listed first in `index.md`.
+
+Each note has:
+
+- a one-line summary and a link that reopens the session
+- Done, Decisions and Open, sized to the session
+- Git: each branch the session used, whether it made it into main, and
+  whether its worktree still exists
+- links to design docs the session used
+- `Follows:` links to earlier notes on the same branch or doc
+- Dataview fields and `#tags` at the bottom
 
 Archiving works in the desktop app only. In the CLI and VS Code it saves the
 note and skips archiving.

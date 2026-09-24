@@ -27,8 +27,13 @@ One line per task.
 - `session-notes`: Claude writes the text, a Python script writes the files
 - Notes in `<root>/<parent>/<project>/`, one `index.md` per project
 - Session name from the transcript: renamed title, else the automatic one
-- Detail levels 1 (default) and 2
+- Claude sizes each note to its session; no detail levels
 - Index lists the newest session first
+- Note: summary and session link on top, then Done, Decisions, Open, Git,
+  Docs; Dataview fields and `#tags` at the bottom
+- Git status per branch, not per commit; squash merges found by message or
+  matching files
+- `Follows:` only by shared branch or doc, to stay fast
 
 ## DECIDED AGAINST
 
@@ -42,3 +47,5 @@ One line per task.
 - A separate naming skill — reviewer already reads the diff
 - A standalone skill for `session-notes` — only plugins get settings
 - `<...>` links in the index — Obsidian's editor doesn't follow them
+- A Files section in notes — noise
+- Properties at the top of notes — the user wants them at the bottom
