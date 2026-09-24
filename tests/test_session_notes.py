@@ -306,13 +306,24 @@ class UpdateIndexTest(TempDirTest):
             + "| [Fix parser](Fix%20parser.md) | 2026-09-20 | 2026-09-23 | Fixed the parser. |\n",
         )
 
-    def test_appends_a_row_for_a_new_note(self):
+    def test_puts_a_new_note_on_top(self):
         self.update("Fix parser.md", "2026-09-23", ["First."])
         text = self.update("Add tests.md", "2026-09-24", ["Second."], title="Add tests")
         self.assertEqual(
             text,
             self.HEADER
-            + "| [Fix parser](Fix%20parser.md) | 2026-09-20 | 2026-09-23 | First. |\n"
+            + "| [Add tests](Add%20tests.md) | 2026-09-20 | 2026-09-24 | Second. |\n"
+            + "| [Fix parser](Fix%20parser.md) | 2026-09-20 | 2026-09-23 | First. |\n",
+        )
+
+    def test_moves_a_note_saved_again_to_the_top(self):
+        self.update("Fix parser.md", "2026-09-23", ["First."])
+        self.update("Add tests.md", "2026-09-24", ["Second."], title="Add tests")
+        text = self.update("Fix parser.md", "2026-09-25", ["Again."])
+        self.assertEqual(
+            text,
+            self.HEADER
+            + "| [Fix parser](Fix%20parser.md) | 2026-09-20 | 2026-09-25 | Again. |\n"
             + "| [Add tests](Add%20tests.md) | 2026-09-20 | 2026-09-24 | Second. |\n",
         )
 
@@ -325,16 +336,30 @@ class UpdateIndexTest(TempDirTest):
             + "| [Fix parser](Fix%20parser.md) | 2026-09-20 | 2026-09-24 | Again. |\n",
         )
 
-    def test_appends_under_the_table_when_the_file_ends_with_blank_lines(self):
+    def test_keeps_other_text_in_the_index(self):
+        table = "| Session | Created | Archived | Note |\n| --- | --- | --- | --- |\n"
         self.write(
             "index.md",
-            self.HEADER + "| [A](A.md) | 2026-09-20 | 2026-09-21 | A. |\n\n\n",
+            "# athc sessions\n\nMy notes.\n\n"
+            + table
+            + "| [A](A.md) | 2026-09-20 | 2026-09-21 | A. |\n\nSee [A](A.md).\n",
         )
+        text = self.update("A.md", "2026-09-22", ["A again."], title="A")
+        self.assertEqual(
+            text,
+            "# athc sessions\n\nMy notes.\n\n"
+            + table
+            + "| [A](A.md) | 2026-09-20 | 2026-09-22 | A again. |\n\nSee [A](A.md).\n",
+        )
+
+    def test_adds_a_table_when_the_index_has_none(self):
+        self.write("index.md", "# athc sessions\n\nNo table yet.\n\n")
         text = self.update("B.md", "2026-09-22", ["B."], title="B")
         self.assertEqual(
             text,
-            self.HEADER
-            + "| [A](A.md) | 2026-09-20 | 2026-09-21 | A. |\n| [B](B.md) | 2026-09-20 | 2026-09-22 | B. |\n",
+            "# athc sessions\n\nNo table yet.\n\n"
+            "| Session | Created | Archived | Note |\n|---|---|---|---|\n"
+            "| [B](B.md) | 2026-09-20 | 2026-09-22 | B. |\n",
         )
 
     def test_keeps_titles_and_summaries_from_breaking_the_table(self):

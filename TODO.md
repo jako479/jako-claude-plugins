@@ -28,6 +28,7 @@ One line per task.
 - Notes in `<root>/<parent>/<project>/`, one `index.md` per project
 - Session name from the transcript: renamed title, else the automatic one
 - Detail levels 1 (default) and 2
+- Index lists the newest session first
 
 ## DECIDED AGAINST
 

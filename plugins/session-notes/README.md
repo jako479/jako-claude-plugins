@@ -18,7 +18,8 @@ It writes:
 ```
 
 `<parent>/<project>` comes from the session's folder, for example
-`PNFL/athc`. A session in a worktree uses its main folder.
+`PNFL/athc`. A session in a worktree uses its main folder. The newest session
+is listed first in `index.md`.
 
 Archiving works in the desktop app only. In the CLI and VS Code it saves the
 note and skips archiving.

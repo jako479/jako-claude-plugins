@@ -31,6 +31,8 @@ BAD_NAME_CHARACTERS = re.compile(r'[<>:"/\\|?*#%^\[\]{}()\x00-\x1f]')
 RESERVED_NAMES = {"CON", "PRN", "AUX", "NUL", "INDEX"} | {
     f"{port}{n}" for port in ("COM", "LPT") for n in range(1, 10)
 }
+# The table's |---|---| line, with or without spaces and alignment colons.
+SEPARATOR_ROW = re.compile(r"\|(\s*:?-+:?\s*\|)+")
 INDEX_HEADER = ["| Session | Created | Archived | Note |", "|---|---|---|---|"]
 
 
@@ -205,7 +207,7 @@ def update_index(
     archived: str,
     summary: list[str],
 ) -> None:
-    """Add the note's row, or replace it if the note is already listed."""
+    """Put the note's row at the top of the table, replacing any earlier row for it."""
     link = file_name.replace(" ", "%20")
     link_text = cell(title).replace("[", "(").replace("]", ")")
     row = f"| [{link_text}]({link}) | {created} | {archived} | {'<br>'.join(cell(text) for text in summary)} |"
@@ -214,14 +216,25 @@ def update_index(
     else:
         lines = [f"# {project} sessions", "", *INDEX_HEADER]
     key = f"]({link})"
-    for number, text in enumerate(lines):
-        if key in text:
-            lines[number] = row
-            break
-    else:
+    lines = [
+        text for text in lines if not (text.lstrip().startswith("|") and key in text)
+    ]
+    separator = next(
+        (
+            number
+            for number, text in enumerate(lines)
+            if SEPARATOR_ROW.fullmatch(text.strip())
+        ),
+        None,
+    )
+    if separator is None:
         while lines and not lines[-1].strip():
             lines.pop()
-        lines.append(row)
+        if lines:
+            lines.append("")
+        lines += INDEX_HEADER
+        separator = len(lines) - 1
+    lines.insert(separator + 1, row)
     write_text(index, "\n".join(lines) + "\n")
 
 

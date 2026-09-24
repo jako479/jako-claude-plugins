@@ -1,11 +1,13 @@
 # Status
 
-Updated: 2026-09-23 — `session-notes` added.
+Updated: 2026-09-23 — `session-notes` 1.0.1.
 
 Open tasks: [TODO.md](TODO.md).
 
 ## Recently done
 
+- 2026-09-23 — `session-notes` 1.0.1: the newest session goes at the top of
+  `index.md`.
 - 2026-09-23 — new plugin `session-notes`. `/session-notes:archive-session`
   saves a short session note and an index row, then archives the session in
   the app.
